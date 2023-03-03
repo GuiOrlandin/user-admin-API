@@ -31,6 +31,10 @@ class UsersRepository implements IUsersRepository {
   findById(id: string): User | undefined {
     const user = this.users.find((user) => user.id === id);
 
+    if (!user) {
+      throw new Error("User not found!");
+    }
+
     return user;
   }
 
@@ -44,12 +48,13 @@ class UsersRepository implements IUsersRepository {
 
   turnAdmin(receivedUser: User): User {
     if (!receivedUser) {
-      throw new Error("User dont found!");
+      throw new Error("User not found!");
     }
 
     Object.assign(receivedUser, {
       ...receivedUser,
       admin: true,
+      update_at: new Date(),
     });
 
     return receivedUser;
