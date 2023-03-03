@@ -41,8 +41,22 @@
           "201": {
             "description": "Created"
           },
-          "501": {
-            "description": "User already exists"
+          "500": {
+            "description": "User already exists!",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    },
+                  "example": {
+                    "error": "User already exists!"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -94,7 +108,25 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "User not found!",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    },
+                  "example": {
+                    "error": "User not found!"
+                  }
+                }
+              }
+            }
           }
+          
         }
       }
     },
@@ -142,6 +174,23 @@
                     "admin": true,
                     "create_at": "Date",
                     "updated_at": "Date"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "User not found!",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    },
+                  "example": {
+                    "error": "User not found!"
                   }
                 }
               }
@@ -194,6 +243,23 @@
                     "admin": "boolean",
                     "create_at": "Date",
                     "updated_at": "Date"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "User not found!",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "properties": {
+                      "error": {
+                        "type": "string"
+                      }
+                    },
+                  "example": {
+                    "error": "User not found!"
                   }
                 }
               }
