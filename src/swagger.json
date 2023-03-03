@@ -1,0 +1,206 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "UserAdmin Documentation",
+    "description": "This is an API for create a user and turn him Admin.",
+    "version": "1.0.0",
+    "contract": {
+      "email": "guiorlandin@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Create a user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Name sample",
+                  "email": "email@gmail.com",
+                  "admin": false,
+                  "create_at": "Date"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "501": {
+            "description": "User already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": ["User"],
+        "summary": "List all users",
+        "description": "Only admins have access!",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "header",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "create_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  },
+                  "example": {
+                    "name": "Name sample",
+                    "email": "email@gmail.com",
+                    "admin": false,
+                    "create_at": "Date",
+                    "updated_at": "Date"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "patch": {
+        "tags": ["User"],
+        "summary": "Turn an user admin!",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "create_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  },
+                  "example": {
+                    "name": "Name sample",
+                    "email": "email@gmail.com",
+                    "admin": true,
+                    "create_at": "Date",
+                    "updated_at": "Date"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Acess user information!",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "create_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  },
+                  "example": {
+                    "name": "Name sample",
+                    "email": "email@gmail.com",
+                    "admin": "boolean",
+                    "create_at": "Date",
+                    "updated_at": "Date"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
