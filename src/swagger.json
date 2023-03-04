@@ -38,19 +38,53 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "admin": {
+                        "type": "boolean"
+                      },
+                      "create_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  },
+                  "example": {
+                    "name": "Name sample",
+                    "email": "email@gmail.com",
+                    "admin": false,
+                    "create_at": "Date",
+                    "updated_at": "Date"
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "User already exists!",
             "content": {
               "application/json": {
                 "schema": {
-                    "properties": {
-                      "error": {
-                        "type": "string"
-                      }
-                    },
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
                   "example": {
                     "error": "User already exists!"
                   }
@@ -114,11 +148,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                    "properties": {
-                      "error": {
-                        "type": "string"
-                      }
-                    },
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
                   "example": {
                     "error": "User not found!"
                   }
@@ -126,7 +160,6 @@
               }
             }
           }
-          
         }
       }
     },
@@ -184,11 +217,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                    "properties": {
-                      "error": {
-                        "type": "string"
-                      }
-                    },
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
                   "example": {
                     "error": "User not found!"
                   }
@@ -253,11 +286,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                    "properties": {
-                      "error": {
-                        "type": "string"
-                      }
-                    },
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
                   "example": {
                     "error": "User not found!"
                   }
